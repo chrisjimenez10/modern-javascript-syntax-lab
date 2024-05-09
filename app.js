@@ -131,9 +131,139 @@ const car2 = {
 const myCar = {...car2};
 myCar.model = "q7";
 console.log("Original:", car2);
-console.log("New:", myCar);  
-  
+console.log("New:", myCar);
 
+//-------------------- Dynamic Keys in Objects -------------------\\
+const fruitInventory = {
+    apples: 2,
+    oranges: 4,
+  };
   
-      
-    
+  const selectedFruit = 'apples'; // Variable as a dynamic key
+  const selectedFruitCount = fruitInventory[selectedFruit]; //Because we are using the variable holding the property name, we need to use square bracket notation 
+  
+//   console.log(selectedFruitCount); // 2
+
+const fruitType = 'bananas'; // Variable as a dynamic key
+
+const fruitInventory2 = {
+    [fruitType]: 5, //Property is created dynamically with square bracket notation 
+    };
+
+console.log(fruitInventory2); // { bananas: 5 }
+
+//Exercise #6:
+// Create an object named userProfile. 
+// Define a variable named propertyName and assign a string to it (like a username, age, or email). 
+// Use propertyName as a dynamic key in userProfile, assigning a relevant value.
+
+// Your code here
+const propertyName = "email";
+const userProfile = {
+    [propertyName]: "learningreact10@gmail.com",
+}
+console.log(userProfile);
+
+//------------------- Import and Export --------------------\\
+//Exercise #7: In exportingFile.js and importingFile.js  
+
+//-------------------- Default Parameters --------------------\\
+function addThreeNumbers(numA = 1, numB = 2, numC = 1) { 
+    return numA + numB + numC;
+  }
+  
+addThreeNumbers(2); //numA will use the argument is was given, overriding the default parameter
+
+//Exercise #8:
+// Create a function that takes two parameters, `noun` and `adjective`, both with the following respective default values:
+
+// 1. `cat`
+
+// 2. `white`
+
+// The function should log a sentence 'The cat is white.' by default. The function should substitute the appropriate parameters when supplied arguments.
+
+// Your code here
+function petColor(noun = "cat", adjective = "white"){
+    console.log(`The ${noun} is ${adjective}.`);
+};
+petColor();
+petColor("dog", "black");
+
+//-------------------- The ternary operator --------------------\\  
+const age = 22;
+let access = age > 21 ? 'Yes' : 'No';
+
+// console.log(access); // 'Yes'
+
+//Exercise #9:
+// Convert the following `if...else` statement in to a ternary:
+
+let pizza = 'tasty';
+
+// if (pizza === 'tasty') {
+//   console.log('yum');
+// } else {
+//   console.log('yuck');
+// }
+
+// Your code here
+pizza === "tasty" ? console.log("yum") : console.log("yuck");
+let pizzaRating = pizza === "tasty" ? "yum" : "yuck";
+console.log(pizzaRating);
+
+//-------------------- Boolean Gates --------------------\\
+const myVar = "";
+const result1 = 'bar' && 'foo'; // && Operator - looks for FIRST falsy value from left to right
+const result2 = false || 243; // || operator - Looks for FIRST truthy value from left to right
+const result3 = 42 && false;
+const result4 = myVar || 3000;
+
+console.log('result1:', result1);
+console.log('result2:', result2);
+console.log('result3:', result3);
+console.log('result4:', result4);
+
+//Exercise #10:
+// Simulated language configuration (change this variable to test)
+const localLangConfig = null; // Change to 'es', 'fr', etc., or keep it null
+
+// Create a variable called LANG
+// Assign LANG the value of localLangConfig or 'en' as a default
+
+// Your code here
+const LANG = localLangConfig &&  "en";
+// Log the result
+console.log('Language setting:', LANG);
+
+// Simulated user theme preference (change this variable to test)
+const userSavedTheme = "dark"; // Change to 'dark', 'contrast', etc., or keep it null
+
+// Create a variable called USER_THEME
+// Assign USER_THEME the value of userSavedTheme or 'light' as a default
+
+// Your code here
+const USER_THEME = userSavedTheme || "light";
+// Log the result
+console.log('User theme setting:', USER_THEME);
+
+//-------------------- Optional Chaining --------------------\\
+const adventurer = {
+    name: 'Alice',
+  };
+  
+  let dog = adventurer.dog?.name; //Addding the question mark ? after the property we are unsure if it exists yet (usually a concern when tyring to access deeply nested properties), we handle the error and return the value of undefined instead of crashing after the code runs
+  
+//   console.log(dog); // undefined
+ 
+//Exercise #11:
+// Now check for `cat.age` on `adventurer2`. See how it errors out? Use optional chaining in a console.log that it returns undefined instead.
+
+const adventurer2 = {
+    name: 'Alice',
+  };
+  
+  let cat = adventurer2.cat?.age // Your code here
+  
+  console.log(cat);
+     
